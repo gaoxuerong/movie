@@ -1,0 +1,36 @@
+<% include layout_header.html %>
+<ol class="breadcrumb">
+    <li><a href="/">管理首页</a></li>
+    <li><span>用户列表</span></li>
+</ol>
+<h3>用户列表</h3>
+<table class="table table-hover table-striped table-responsive table-bordered">
+    <tr>
+        <th>ID</th>
+        <th>用户名</th>
+        <th>密码</th>
+        <th>是否是管理员</th>
+    </tr>
+    <% for(var user of users){ %>
+    <tr>
+        <td><%= user._id %></td>
+        <td><%= user.username %></td>
+        <td><%= user.password %></td>
+        <td>
+            <% if(user.isadmin){ %>
+            是
+            <% }else{ %>
+            否
+            <% } %>
+        </td>
+    </tr>
+    <% } %>
+</table>
+<ul class="pager">
+    <li class="previous"><a href="/admin/user?page=<%= (page-1) %>">&larr; 上一页</a></li>
+    <li>
+        一共有<a><%= count %></a>条数据，每页显示<a><%= limit %></a>条数据，共<a><%= pages %></a>页，当前为第<a><%= (page) %></a>页
+    </li>
+    <li class="next"><a href="/admin/user?page=<%= (page+1) %>">下一页 &rarr;</a></li>
+</ul>
+<% include layout_footer.html %>

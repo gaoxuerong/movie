@@ -1,0 +1,121 @@
+<!--头部通用的代码-->
+<% include layout_header.html %>
+<!--搜索查询-->
+<form class="navbar-form navbar-left" role="search" method="post" action="/main/search" style="width:55%;">
+  <div class="form-group" style="width:90%;">
+    <input type="text" class="form-control" placeholder="Search" name="contentname" style="width:100%;">
+  </div>
+  <button type="submit" class="btn btn-default">提交 </button>
+</form>
+<!--登录注册功能-->
+<% if(userInfo._id){ %>
+<div class="nav navbar-nav navbar-right">
+  <span class="loginname">
+    <%= userInfo.username %></span>
+  <% if(userInfo.isadmin){ %>
+  <span>你好呀，管理员</span><a href="\admin" class="manager-click">你可以点击这里进行管理呦</a>
+  <% }else{ %>
+  <span>你好，欢迎光临思沃影院</span>
+  <% } %>
+  <button class="btn btn-success"><a href="javascript:" id="loginoutBtn">退出</a></button>
+</div>
+<% }else{ %>
+<button type="button" class="btn btn-default navbar-btn" id="register" data-toggle="modal" data-target="#myModal">注册</button>
+<button type="button" class="btn btn-default navbar-btn" id="login" data-toggle="modal" data-target="#myModals">登录</button>
+<% } %>
+<!--模态框通用样式-->
+<% include login_register_modal.html %>
+</div>
+</div>
+</nav>
+<!--电影详细信息-->
+<div class="container">
+  <div class="row content-margin">
+    <div class="col-md-12 content-bg">
+      <div class="blog-post">
+        <h2>
+          <%= content.title %>
+        </h2>
+        <h4>
+          发布时间:<a href="#">
+            <%= content.addTime.toLocaleString() %></a>
+          阅读数:
+          <%= content.view %>
+        </h4>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="view-movie">
+              <img class="view-movie-img img-thumbnail" src="<%= content.post %>" alt="img" />
+            </div>
+            <div class="view-movie movie-detail-info">
+              <div class="view-movie-name">影片名：<span>
+                  <%= content.title %></span></div>
+              <div class="view-movie-director">导演：<span>
+                  <%= content.director   %></span></div>
+              <div class="view-movie-actor">主演：<span>
+                  <%= content.actor   %></span></div>
+              <div class="view-movie-date">上映时间：<span>
+                  <%= content.moviedate.toLocaleString() %></span></div>
+              <div class="view-movie-score">评分：<span>
+                  <%= content.score   %></span></div>
+            </div>
+          </div>
+        </div>
+        <!--类似电影推荐-->
+        <div class="panel panel-warning">
+          <div class="panel-heading">
+            <h3 class="panel-title">
+              类似电影推荐
+            </h3>
+          </div>
+          <div class="panel-body">
+            <div class="similar-recommend">
+              <% for(categorys  of category){ %>
+              <div class="similar-recommend-movie">
+                <a href="/view?contentid=<%= categorys._id %>">
+                  <img class="movie-img img-thumbnail" src=<%=categorys.post %> alt="img">
+                </a>
+              </div>
+              <% } %>
+            </div>
+          </div>
+        </div>
+        <!--电影简介-->
+        <div class="panel panel-success movie-item-description">
+          <div class="panel-heading">
+            <h3 class="panel-title">
+              电影简介
+            </h3>
+          </div>
+          <div class="panel-body">
+            <%= content.description %>
+          </div>
+        </div>
+      </div>
+      <br />
+      <!--评论-->
+      <div class="blog-post">
+        <h2>评论</h2>
+        <% if(userInfo._id){ %>
+        <span>一共有<a href="#" class="messageCount"></a>条评论</span>
+        <div class="input-group">
+          <input type="text" class="form-control" style="width: 100%" id="messageContent">
+          <input type="hidden" id="contentId" value="<%= content._id %>">
+          <span class="input-group-addon" style="cursor:pointer" id="messageBtn">提交</span>
+        </div>
+        <br />
+        <% }else{ %>
+        <button id="btnLogin" class="btn btn-success btn-group-sm" style="width: 100%">你还没有登录，请先登录</button>
+        <% } %>
+        <div class="messageList"></div>
+        <ul class="pager">
+          <li class="previous"><a href="#">上一页</a></li>
+          <li></li>
+          <li class="next"><a href="#">下一页</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<!--尾部通用的代码-->
+<% include layout_footer.html %>

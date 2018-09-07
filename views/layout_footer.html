@@ -1,0 +1,129 @@
+<div class="footer-sec" style="margin-top: 0px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 foo-inner">
+                Copyright ©2018 cctGroup1
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../js/jquery-1.11.3.js"></script>
+<script src="../js/bootstrap.js"></script>
+<script src="../js/index.js"></script>
+<script src="../js/comment.js"></script>
+<script src="../js/swiper.js"></script>
+<script>
+    //类似电影推荐部分，从数据库读出的数据和本条电影信息重复的隐藏样式
+    $(function () {
+        var viewMovieImg = $('.view-movie-img')[0].src;
+        $('img').each(function () {
+            if (this.src === viewMovieImg) {
+                $(this).parent().parent().css('display', 'none');
+                $('.view-movie-img').parent().parent().css('display', 'block');
+            }
+        });
+    });
+</script>
+<!-- Include plugin after Swiper -->
+<script>
+    var myPlugin = {
+        name: 'debugger',
+        params: {
+            debugger: false,
+        },
+        on: {
+            init: function () {
+                if (!this.params.debugger) return;
+
+            },
+            click: function (e) {
+                if (!this.params.debugger) return;
+
+            },
+            tap: function (e) {
+                if (!this.params.debugger) return;
+
+            },
+            doubleTap: function (e) {
+                if (!this.params.debugger) return;
+
+            },
+            sliderMove: function (e) {
+                if (!this.params.debugger) return;
+
+            },
+            slideChange: function () {
+                if (!this.params.debugger) return;
+
+            },
+            slideChangeTransitionStart: function () {
+                if (!this.params.debugger) return;
+
+            },
+            slideChangeTransitionEnd: function () {
+                if (!this.params.debugger) return;
+
+            },
+            transitionStart: function () {
+                if (!this.params.debugger) return;
+
+            },
+            transitionEnd: function () {
+                if (!this.params.debugger) return;
+
+            },
+            fromEdge: function () {
+                if (!this.params.debugger) return;
+
+            },
+            reachBeginning: function () {
+                if (!this.params.debugger) return;
+
+            },
+            reachEnd: function () {
+                if (!this.params.debugger) return;
+
+            },
+        },
+    };
+</script>
+
+<script>
+    // Install Plugin To Swiper
+    Swiper.use(myPlugin);
+    // Init Swiper
+    var swiper = new Swiper('.swiper-container', {
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        // Enable debugger
+        debugger: true,
+        // 轮播图的方向，也可以是vertical方向
+        direction: 'horizontal',
+        //播放速度
+        loop: true,
+        // 自动播放
+        autoplay: true,
+        // 播放的速度
+        speed: 2000,
+        // 如果需要前进后退按钮
+        nextButton: '.swiper-button-next',
+        prevButton: '.swiper-button-prev',
+        // 这样，即使我们滑动之后， 定时器也不会被清除
+        autoplayDisableOnInteraction: false,
+    });
+    $('.swiper-container').mouseenter(function () {
+        swiper.autoplay.stop()
+    }).mouseleave(function () {
+        swiper.autoplay.start()
+    })
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,2 @@
+{"_id":{"$oid":"5a57628d869f7314185f2123"},"username":"gxr","password":"123","isadmin":true,"__v":0}
+{"_id":{"$oid":"5a6c75414934c438107ffc98"},"username":"123","password":"123","isadmin":false,"__v":0}

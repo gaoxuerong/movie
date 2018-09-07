@@ -1,0 +1,113 @@
+<!--头部通用的代码-->
+<% include layout_header.html %>
+<!--搜索查询-->
+<form class="navbar-form navbar-left" role="search" method="post" action="/main/search" style="width:55%;">
+  <div class="form-group" style="width:90%;">
+    <input type="text" class="form-control contentname" placeholder="Search" name="contentname" style="width:100%;">
+  </div>
+  <button type="submit" class="btn btn-default" id="search-btn" data-toggle="modal" data-target="#tijiao">提交 </button>
+</form>
+<!--登录注册功能-->
+<% if(userInfo._id){ %>
+<div class="nav navbar-nav navbar-right">
+  <span class="loginname">
+    <%= userInfo.username %></span>
+  <% if(userInfo.isadmin){ %>
+  <span>你好，Administrator</span><a href="\admin" class="manager-click">你可以点击这里进行管理呦</a>
+  <% }else{ %>
+  <span>你好，欢迎光临思沃影院</span>
+  <% } %>
+  <button class="btn btn-success"><a href="javascript:" id="loginoutBtn">退出</a></button>
+</div>
+<% }else{ %>
+<button type="button" class="btn btn-default navbar-btn" id="register" data-toggle="modal" data-target="#myModal">注册</button>
+<button type="button" class="btn btn-default navbar-btn" id="login" data-toggle="modal" data-target="#myModals">登录</button>
+<% } %>
+<!--模态框通用样式-->
+<% include login_register_modal.html %>
+</div>
+</div>
+</nav>
+<!-- Swiper轮播图 -->
+<div class="swiper-container">
+  <div class="swiper-wrapper">
+    <img class="swiper-slide swiper-wrapper-img img-responsive" src="./images/lunbo1.jpg">
+    <img class="swiper-slide swiper-wrapper-img img-responsive" src="./images/lunbo2.jpg">
+    <img class="swiper-slide swiper-wrapper-img img-responsive" src="./images/lunbo3.jpg">
+    <img class="swiper-slide swiper-wrapper-img img-responsive" src="./images/lunbo4.jpg">
+  </div>
+  <!-- Add Pagination -->
+  <div class="swiper-pagination"></div>
+  <!-- Add Navigation -->
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-button-next"></div>
+</div>
+<!-- 电影分类展示 -->
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">
+      电影分类
+    </h3>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="container">
+        <% for(var category of categories){ %>
+        <span class="movie-cayegory-item"><a href="/?category=<%=  category._id %>">
+            <%=  category.name %></a></span>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 首页电影展示，8条数据一页 -->
+<div class="container">
+  <div class="row content-margin">
+    <div class="col-md-12 content-bg">
+      <div class="main" id="main-wrap">
+        <% for(article  of articles){ %>
+        <div class="movie-box">
+          <ul class="movie-box-ul">
+            <li class="movie-box-item">
+              <a href="/view?contentid=<%= article.id %>">
+                <img class="movie-img img-thumbnail" src=<%=article.post %> alt="img">
+              </a>
+            </li>
+            <li class="movie-name">电影名：<span>
+                <%= article.title %></span></li>
+            <li class="movie-score">评分：<span>
+                <%= article.score   %></span></li>
+          </ul>
+
+        </div>
+        <% } %>
+      </div>
+      <br />
+      <ul class="pager">
+        <% if( page <=1){ %>
+        <li class="previous"><span>没有上一页了</span></li>
+        <% }else{ %>
+        <li class="previous"><a href=" /?page=<%= (page-1) %>">上一页</a></li>
+        <% } %>
+        <% if( pages>0){ %>
+        <li>
+          <%= page %>/
+          <%= pages %>
+        </li>
+        <% }else{ %>
+        <li>
+          <%= page %>/
+          <%= 1 %>
+        </li>
+        <% } %>
+        <% if( page >= pages){ %>
+        <li class="next"><span>没有下一页了</span></li>
+        <% }else{ %>
+        <li class="next"><a href="/?page=<%= (page+1) %>">下一页</a></li>
+        <% } %>
+      </ul>
+    </div>
+  </div>
+</div>
+<!--尾部通用代码-->
+<% include layout_footer.html %>

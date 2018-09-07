@@ -1,0 +1,82 @@
+<!-- 注册模态框（Modal） -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <div class="register" id="registerBox">
+                    <ul class="list-group">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">注册</h3>
+                            </div>
+                            <div class="panel-body">
+                                <form class="bs-example bs-example-form" role="form">
+                                    <div class="input-group loginname">
+                                        <span class="input-group-addon">用户名：</span>
+                                        <input type="text" class="form-control username" placeholder="请输入用户名" name="username">
+                                    </div>
+                                    <div class="input-group loginpw">
+                                        <span class="input-group-addon">密码：</span>
+                                        <input type="password" class="form-control password" placeholder="请输入密码" name="password">
+                                    </div>
+                                    <div class="input-group loginpw">
+                                        <span class="input-group-addon">确认密码：</span>
+                                        <input type="password" class="form-control repassword" placeholder="请输入密码" name="repassword">
+                                    </div>
+                                </form>
+                                <button class="btn btn-success btn-group-sm loginbtn">注册</button>
+                                <p id="register_bottom"></p>
+                            </div>
+                        </div>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn  btn-primary" data-dismiss="modal">关闭
+                    </button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+</div>
+<!-- 登录模态框（Modal） -->
+<div class="modal fade" id="myModals" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <div class="login" id="loginBox">
+                    <ul class="list-group">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">登录</h3>
+                            </div>
+                            <div class="panel-body">
+                                <form class="bs-example bs-example-form" role="form">
+                                    <div class="input-group loginname">
+                                        <span class="input-group-addon">用户名：</span>
+                                        <input type="text" class="form-control" placeholder="请输入用户名" name="username">
+                                    </div>
+                                    <div class="input-group loginpw">
+                                        <span class="input-group-addon">密码：</span>
+                                        <input type="password" class="form-control" placeholder="请输入密码" name="password">
+                                    </div>
+                                </form>
+                                <button class="btn btn-success btn-group-sm loginbtn">登录</button>
+                                <p id="login_bottom"></p>
+                            </div>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn  btn-primary" data-dismiss="modal">关闭
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
